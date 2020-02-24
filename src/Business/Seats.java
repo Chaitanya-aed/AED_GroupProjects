@@ -13,17 +13,43 @@ import java.util.ArrayList;
  */
 public class Seats {
     private ArrayList<Integer> seatsTaken;
-    private ArrayList<Integer> totalSeatsTaken;
+    private ArrayList<Integer> availableSeats;
+    private ArrayList<Integer> totalSeats;
     
     public Seats(){
         seatsTaken = new ArrayList<Integer>();
-        totalSeatsTaken = new ArrayList<Integer>();
+        totalSeats = new ArrayList<Integer>();
+        
     }
-    public void setSeats(int seatCount){
-        for(int i=1; i<seatCount;i++){
-            totalSeatsTaken.add(i);
+
+    public ArrayList<Integer> getAvailableSeats() {
+        availableSeats = new ArrayList<Integer>();
+        for(int i = 1; i<= totalSeats.size(); i++){
+                if(!seatsTaken.contains(i)){
+                    availableSeats.add(i);
+                }
+    }
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(ArrayList<Integer> availableSeats) {
+        this.availableSeats = availableSeats;
+    }
+
+    public ArrayList<Integer> getTotalSeats() {
+        return totalSeats;
+    }
+    
+    //Setting all seats on the flight
+    public void setTotalSeats(int seatCount) {
+        if(totalSeats.isEmpty()){
+           for(int i = 1; i<=seatCount ; i++)
+            {
+                totalSeats.add(i);
+            } 
         }
     }
+    
     public ArrayList<Integer> getSeatsTaken() {
         return seatsTaken;
     }

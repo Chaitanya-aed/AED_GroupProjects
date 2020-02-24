@@ -8,6 +8,7 @@ import Business.CustomerDirectory;
 import Business.AirlineDirectory;
 import Business.AirlinerDirectory;
 import Business.FleetDirectory;
+import Business.FlightDetailsDirectory;
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
@@ -26,13 +27,15 @@ public class ManageAirliner extends javax.swing.JPanel {
     private CustomerDirectory custDict;
     private FleetDirectory fleetdirectory;
     private AirlinerDirectory airlinerDirectory;
-    public ManageAirliner(JPanel CardSequenceJPanel, CustomerDirectory custDirecr, AirlineDirectory airDirect, FleetDirectory fleetdirectory,AirlinerDirectory airlinerDirectory) {
+    private FlightDetailsDirectory flightDetailsDirectory;
+    public ManageAirliner(JPanel CardSequenceJPanel, CustomerDirectory custDirecr, AirlineDirectory airDirect, FleetDirectory fleetdirectory,AirlinerDirectory airlinerDirectory,FlightDetailsDirectory flightDetailsDirectory) {
           initComponents();
           this.CardSequenceJPanel=CardSequenceJPanel;
           this.custDict= custDirecr;
           this.airDict=airDirect;
           this.fleetdirectory=fleetdirectory;
           this.airlinerDirectory = airlinerDirectory;
+          this.flightDetailsDirectory = flightDetailsDirectory;
     }
 
     /**
@@ -47,12 +50,12 @@ public class ManageAirliner extends javax.swing.JPanel {
         btnManageAirliner = new javax.swing.JButton();
         btnViewCustomer = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 204, 255));
+        setBackground(new java.awt.Color(73, 0, 153));
 
         btnManageAirliner.setBackground(new java.awt.Color(255, 255, 255));
         btnManageAirliner.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnManageAirliner.setText("Manage Airline");
-        btnManageAirliner.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnManageAirliner.setBorder(null);
         btnManageAirliner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageAirlinerActionPerformed(evt);
@@ -62,7 +65,7 @@ public class ManageAirliner extends javax.swing.JPanel {
         btnViewCustomer.setBackground(new java.awt.Color(255, 255, 255));
         btnViewCustomer.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnViewCustomer.setText("View Customer");
-        btnViewCustomer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnViewCustomer.setBorder(null);
         btnViewCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewCustomerActionPerformed(evt);
@@ -74,20 +77,20 @@ public class ManageAirliner extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageAirliner, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(951, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnViewCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(btnManageAirliner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(btnManageAirliner, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(btnViewCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(595, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(btnManageAirliner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnViewCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(682, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,7 +104,7 @@ public class ManageAirliner extends javax.swing.JPanel {
 
     private void btnViewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCustomerActionPerformed
         // TODO add your handling code here:
-        CustomerTADetails cdp = new CustomerTADetails(CardSequenceJPanel,custDict);
+        CustomerTADetails cdp = new CustomerTADetails(CardSequenceJPanel,custDict,flightDetailsDirectory);
         CardSequenceJPanel.add("customerdetailsJPanel",cdp);
         CardLayout layout=(CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);
